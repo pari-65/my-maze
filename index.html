@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maze Puzzle Game</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Example inline styles if needed; move to style.css */
+    #mazeCanvas {
+      border: 1px solid black;
+    }
+    #completion-message, #no-points-message {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="maze-container">
+    <div id="canvas-wrapper">
+      <canvas id="mazeCanvas"></canvas>
+    </div>
+
+    <!-- Level Buttons -->
+    <div id="level-buttons">
+      <button id="easyButton" class="level-button">Easy</button>
+      <button id="mediumButton" class="level-button">Medium</button>
+      <button id="hardButton" class="level-button">Hard</button>
+    </div>
+
+    <!-- Control Buttons -->
+    <div id="control-buttons">
+      <button class="arrow" id="upButton" aria-label="Move Up">↑</button>
+      <div>
+        <button class="arrow" id="leftButton" aria-label="Move Left">←</button>
+        <button class="arrow" id="rightButton" aria-label="Move Right">→</button>
+      </div>
+      <button class="arrow" id="downButton" aria-label="Move Down">↓</button>
+    </div>
+
+    <!-- Reset Button -->
+    <div id="character-buttons">
+      <button id="resetButton" aria-label="Reset Game">Reset</button>
+    </div>
+
+   
+
+    <!-- Completion Message -->
+    <div id="completion-message"></div>
+    
+    <div id="wall-message" style="display: none; color: red;"></div>
+    
+    </div>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

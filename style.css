@@ -1,0 +1,559 @@
+/* General Styles */
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden; /* Optional: prevents scrolling if the background is larger */
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(
+    to bottom,
+    #87CEEB 0%, /* Sky blue */
+    #B0E57C 50%, /* Lighter green (transition color) */
+    #4CAF50 90%  /* Grass green */
+  );
+  background-size: cover; /* Cover the entire background */
+  background-blend-mode: multiply; /* Blend texture with gradient */
+}
+
+#maze-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    position: relative;
+}
+
+#mazeCanvas {
+    border: 2px solid black;
+    background-color: #f0f0f0;
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+/* Level Buttons */
+#easyButton{
+    background-color: #4CAF50;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin: 5px;
+    margin-bottom: 20px;
+}
+
+#mediumButton {
+    background-color: #FF9800;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin: 5px;
+    margin-bottom: 20px;
+}
+
+#hardButton {
+    background-color: #F44336;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin: 5px;
+    margin-bottom: 20px;
+}
+/* Control Buttons */
+#control-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.arrow {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 24px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.arrow:hover {
+    background-color: #1976D2;
+}
+#resetButton {
+    background-color: #F44336;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-top: 20px;
+}
+
+#resetButton:hover {
+    background-color: #d32f2f;
+}
+/* Score Display */
+#score-container {
+    font-size: 20px;
+    font-weight: bold;
+}
+/* Style for completion message */
+#completion-message {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #30f12a;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+/* Media Queries for Responsiveness */
+
+/* Small screens (phones, 600px and down) */
+@media (max-width: 600px) {
+    #mazeCanvas {
+      max-width: 70%; /* Make the canvas full width on smaller screens */
+    }
+  
+    #easyButton{
+        background-color: #4CAF50;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+    
+    #mediumButton {
+        background-color: #FF9800;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+    
+    #hardButton {
+        background-color: #F44336;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+  
+    .arrow {
+      padding: 12px;
+      font-size: 20px;
+    }
+  
+    #score-container {
+      font-size: 18px; /* Smaller font size for score display */
+    }
+  
+    #completion-message {
+      font-size: 18px; /* Smaller font size for completion message */
+      padding: 10px 15px; /* Reduced padding */
+    }
+  }
+  
+  /* Media Queries for Responsiveness */
+
+/* Mobile S (320px) */
+@media (max-width: 320px) {
+    #mazeCanvas {
+      max-width: 80%; /* Make the canvas larger on very small screens */
+    }
+  
+    
+    #easyButton{
+        background-color: #4CAF50;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+    
+    #mediumButton {
+        background-color: #FF9800;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+    
+    #hardButton {
+        background-color: #F44336;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+
+  
+    .arrow {
+      padding: 10px;
+      font-size: 18px;
+    }
+  
+    #score-container {
+      font-size: 16px; /* Smaller font size */
+    }
+  
+    #completion-message {
+      font-size: 16px; /* Smaller font size */
+      padding: 8px 12px; /* Reduced padding */
+    }
+  }
+  
+  /* Mobile M (375px) */
+  @media (min-width: 321px) and (max-width: 375px) {
+    #mazeCanvas {
+      max-width: 80%; /* Slightly smaller than on smaller screens */
+    }
+  
+    
+    #easyButton{
+        background-color: #4CAF50;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+    
+    #mediumButton {
+        background-color: #FF9800;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+    
+    #hardButton {
+        background-color: #F44336;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+
+  
+    .arrow {
+      padding: 12px;
+      font-size: 20px;
+    }
+  
+    #score-container {
+      font-size: 18px; /* Slightly smaller font size */
+    }
+  
+    #completion-message {
+      font-size: 18px; /* Slightly smaller font size */
+      padding: 10px 15px; /* Adjust padding */
+    }
+  }
+  
+  /* Mobile L (425px) */
+  @media (min-width: 376px) and (max-width: 425px) {
+    #mazeCanvas {
+        max-width: 80%; /* Adjust width */
+    }
+  
+    #easyButton{
+        background-color: #4CAF50;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+    
+    #mediumButton {
+        background-color: #FF9800;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+    
+    #hardButton {
+        background-color: #F44336;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+  
+    .arrow {
+      padding: 14px;
+      font-size: 22px;
+    }
+  
+    #score-container {
+      font-size: 19px; /* Default font size */
+    }
+  
+    #completion-message {
+      font-size: 19px; /* Default font size */
+      padding: 11px 18px; /* Default padding */
+    }
+  }
+  
+  /* Tablet (768px) */
+  @media (min-width: 426px) and (max-width: 768px) {
+    #mazeCanvas {
+        max-width: 80%;/* Adjust width */
+    }
+  
+    #easyButton{
+        background-color: #4CAF50;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+    
+    #mediumButton {
+        background-color: #FF9800;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+    
+    #hardButton {
+        background-color: #F44336;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+    .arrow {
+      padding: 14px;
+      font-size: 22px;
+    }
+  
+    #score-container {
+      font-size: 19px; /* Default font size */
+    }
+  
+    #completion-message {
+      font-size: 19px; /* Default font size */
+      padding: 11px 18px; /* Default padding */
+    }
+  }
+  
+  /* Laptop (1024px) */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    #mazeCanvas {
+        max-width: 80%; /* Adjust width */
+    }
+    #easyButton{
+        background-color: #4CAF50;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+    
+    #mediumButton {
+        background-color: #FF9800;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+    
+    #hardButton {
+        background-color: #F44336;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+  
+    .arrow {
+      padding: 15px;
+      font-size: 24px;
+    }
+  
+    #score-container {
+      font-size: 20px; /* Default font size */
+    }
+  
+    #completion-message {
+      font-size: 20px; /* Default font size */
+      padding: 12px 20px; /* Default padding */
+      color: aqua;
+    }
+  }
+  
+  /* Laptop L (1440px) */
+  @media (min-width: 1025px) and (max-width: 1440px) {
+    #mazeCanvas {
+        max-width: 80%;/* Adjust width */
+    }
+  
+    #easyButton{
+        background-color: #4CAF50;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+    
+    #mediumButton {
+        background-color: #FF9800;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+    
+    #hardButton {
+        background-color: #F44336;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+  
+    .arrow {
+      padding: 15px;
+      font-size: 24px;
+    }
+  
+    #score-container {
+      font-size: 20px; /* Default font size */
+    }
+  
+    #completion-message {
+      font-size: 20px; /* Default font size */
+      padding: 12px 20px; /* Default padding */
+    }
+  }
+  
+  /* 4K (2560px and up) */
+  @media (min-width: 1441px) {
+    #mazeCanvas {
+      max-width: 90%; /* Adjust width for very large screens */
+    }
+  
+    #easyButton{
+        background-color: #4CAF50;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+    
+    #mediumButton {
+        background-color: #FF9800;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+    
+    #hardButton {
+        background-color: #F44336;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+        margin: 5px;
+        margin-bottom: 20px;
+    }
+  
+    .arrow {
+      padding: 15px;
+      font-size: 24px;
+    }
+  
+    #score-container {
+      font-size: 20px; /* Default font size */
+    }
+  
+    #completion-message {
+      font-size: 20px; /* Default font size */
+      padding: 12px 20px; /* Default padding */
+    }
+  }
